@@ -10,6 +10,7 @@ const App = () => {
   const [message,setmessage]=useState('You are not authenticated, Please login first');
   const [islogin,setislogin]=useState(false);
   const [path,setpath]=useState('/Login');
+  const [btn,setbtn]=useState('Log In');
   useEffect(()=>{
     if (islogin) {
       setpath('/playground');
@@ -21,10 +22,14 @@ const App = () => {
   return (
     <div className="main-container">
      <p>{message}</p>
-      <a href={path}>PlayGround</a><br/>
-      <a href="/login">Login</a>
+     <ul>
+      <li><a><Link to={path}>PlayGround</Link></a></li>
+      <li><a><Link to="/login">Login</Link></a></li>
+     </ul>
+      {/* <a href={path}>PlayGround</a><br/>
+      <a href="/login">Login</a> */}
       <Routes>
-        <Route path="/login" element={ <Login islogin={setislogin} message={setmessage} />} >Login</Route>
+        <Route path="/login" element={ <Login btn={btn} setbtn={setbtn} islogin={islogin} setislogin={setislogin} message={setmessage} />} >Login</Route>
         <Route path="/playground" element={<PlayGround />}>PlayGround</Route>
         <Route path="*" element={<NotFound />}>NotFound</Route>
         {/* <Route path="/NotFound" element={<NotFound />}>PlayGround</Route> */}

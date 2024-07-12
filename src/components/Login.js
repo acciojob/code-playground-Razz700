@@ -1,15 +1,15 @@
 import React, { useState } from 'react'
 
 const Login = (props) => {
-    const [btn,setbtn]=useState('Log In');
+  
 const handlelogin=()=>[
-    setbtn(btn=>{
+    props.setbtn(btn=>{
         if (btn=='Log In') {
-            props.islogin(true);
+            props.setislogin(true);
             props.message('Logged in, Now you can enter PlayGround');
             return 'Log Out';
         }else{
-            props.islogin(false);
+            props.setislogin(false);
             props.message('You are not authenticated, Please Login first');
             return 'Log In';
         }
@@ -18,7 +18,7 @@ const handlelogin=()=>[
   return (
     <div>
         <p>Login</p>
-        <button onClick={handlelogin}>{btn}</button>
+        <button onClick={handlelogin}>{props.btn}</button>
     </div>
   )
 }
