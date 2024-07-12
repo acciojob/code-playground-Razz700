@@ -12,20 +12,20 @@ const App = () => {
   const [path,setpath]=useState('/Login');
   useEffect(()=>{
     if (islogin) {
-      setpath('/PlayGround');
+      setpath('/playground');
     }else{
-      setpath('/Login');
+      setpath('/login');
     }
  
   },[islogin]);
   return (
     <div className="main-container">
      <p>{message}</p>
-      <Link to={path}>PlayGround</Link><br/>
-      <Link to='/Login'>Login</Link>
+      <a href={path}>PlayGround</a><br/>
+      <a href="/login">Login</a>
       <Routes>
-        <Route path="/Login" element={ <Login islogin={setislogin} message={setmessage} />} >Login</Route>
-        <Route path="/PlayGround" element={<PlayGround />}>PlayGround</Route>
+        <Route path="/login" element={ <Login islogin={setislogin} message={setmessage} />} >Login</Route>
+        <Route path="/playground" element={<PlayGround />}>PlayGround</Route>
         <Route path="*" element={<NotFound />}>NotFound</Route>
         {/* <Route path="/NotFound" element={<NotFound />}>PlayGround</Route> */}
       </Routes>
