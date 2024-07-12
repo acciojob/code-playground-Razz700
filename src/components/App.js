@@ -7,14 +7,14 @@ import { Link, Route, Routes } from "react-router-dom";
 import NotFound from "./NotFound";
 
 const App = () => {
-  const [message,setmessage]=useState('You are not authenticated, Please Login first');
+  const [message,setmessage]=useState('You are not authenticated, Please login first');
   const [islogin,setislogin]=useState(false);
-  const [path,setpath]=useState('/NotFound');
+  const [path,setpath]=useState('/Login');
   useEffect(()=>{
     if (islogin) {
       setpath('/PlayGround');
     }else{
-      setpath('/NotFound');
+      setpath('/Login');
     }
  
   },[islogin]);
@@ -26,7 +26,8 @@ const App = () => {
       <Routes>
         <Route path="/Login" element={ <Login islogin={setislogin} message={setmessage} />} >Login</Route>
         <Route path="/PlayGround" element={<PlayGround />}>PlayGround</Route>
-        <Route path="/NotFound" element={<NotFound />}>PlayGround</Route>
+        <Route path="*" element={<NotFound />}>NotFound</Route>
+        {/* <Route path="/NotFound" element={<NotFound />}>PlayGround</Route> */}
       </Routes>
         {/* Do not remove the main div */}
     </div>
